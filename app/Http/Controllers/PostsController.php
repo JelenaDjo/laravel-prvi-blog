@@ -16,7 +16,8 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::with('comments')->findOrFail($id);
+        //dd($post); // ovo znaci da se prekine program u tom prenutku i prikaze sta se tad tu nalazi
 
         return view('posts.show', ['post'=>$post]);
     }
