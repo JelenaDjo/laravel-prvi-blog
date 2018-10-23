@@ -11,6 +11,11 @@ class Post extends Model
         'title', 'body', 'published'
 
     ];
+    const VALIDATION_RULES = [
+        'title'=>'required',
+        'body'=>'required | min:25',
+        'published'=>'required'
+    ];
 
     public static function getPublishedPosts() // ova funkcija vraca samo one postove koji su published, oni koji nemaju cekirano published nece se videti
     {

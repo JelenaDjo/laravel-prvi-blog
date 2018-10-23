@@ -29,11 +29,7 @@ class PostsController extends Controller
     {
         $this->validate(
             request(),
-            [
-                'title'=>'required',
-                'body'=>'required | min:25',
-                'published'=>'required'
-            ]
+           Post::VALIDATION_RULES
         );
         Post::create(request()->all());
             return redirect('/posts');
