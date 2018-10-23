@@ -25,8 +25,17 @@
             <li>
                 <p><strong>Author:</strong> {{$comment->author}}</p>
                 <p> {{ $comment->text}} </p>
+
+            <form method="POST" action="/posts/{{ $post->id }}/comments/{{ $comment->id }}">
+            {{ csrf_field() }}
+
+             <button type="submit" class="btn btn-danger">Delete comment</button>
+            </forma>
+
             </li>
             @endforeach
+
+           
         </ul>
     @endif
 
