@@ -14,7 +14,7 @@ Route::get('/','PostsController@index');
 Route::get('/logout', 'LoginController@logout');
 
 Route::prefix('login')->group(function(){
-    Route::get('/', 'LoginController@index');
+    Route::get('/', 'LoginController@index')->name('login');
     Route::post('/', 'LoginController@login');
 });
 
@@ -24,8 +24,8 @@ Route::prefix('register')->group(function() {
     Route::post('/', 'RegisterController@store');
 });
 
-Route::prefix('posts')->group(function(){
-    Route::get('/create', 'PostsController@create');
+Route::group(['prefix'=>'posts','middleware'=>['auth']],function(){ // //sve rute smo zastitili sa middleware=>auth, korisnik koji nije ulogovan ne moze da kreira post..., i ovako ubuduce da definisemo prefix
+    Route::get('/create', 'PostsController@create'); ///->middleware('auth');
     Route::post('/', 'PostsController@store');
     Route::get('/{id}', 'PostsController@show');
     Route::get('/','PostsController@index');

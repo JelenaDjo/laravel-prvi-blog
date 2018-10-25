@@ -22,6 +22,8 @@
         </div>
      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    
     @if(count($errors->all()))
         @foreach($errors->all() as $error)
         <div class="alter alter-danger">
@@ -30,3 +32,5 @@
         @endforeach
     @endif    
 @endsection
+
+

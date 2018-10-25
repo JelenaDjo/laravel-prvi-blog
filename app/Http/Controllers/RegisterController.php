@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+    public function __construction()
+    {
+        $this->middleware('guest');
+    }
+
     public function create()
     {
         return view('register.create');
