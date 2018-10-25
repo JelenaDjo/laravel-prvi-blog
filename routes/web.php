@@ -13,6 +13,12 @@
 Route::get('/','PostsController@index');
 Route::get('/logout', 'LoginController@logout');
 
+Route::prefix('login')->group(function(){
+    Route::get('/', 'LoginController@index');
+    Route::post('/', 'LoginController@login');
+});
+
+
 Route::prefix('register')->group(function() {
     Route::get('/', 'RegisterController@create');
     Route::post('/', 'RegisterController@store');
