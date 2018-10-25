@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const VALIDATION_RULES = [
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:10'
+    ];
     /**
      * The attributes that are mass assignable.
      *
