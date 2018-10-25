@@ -25,6 +25,8 @@ class RegisterController extends Controller
         $user->password= bcrypt(request ('password'));
         $user->save();
 
+
+        
        // $user=User::create(request()->all());
         auth()->login($user);
         return redirect('/posts');
