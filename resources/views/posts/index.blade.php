@@ -15,6 +15,8 @@
         @foreach($posts as $post)
             <li>
                 <div class="blog-post"> 
+                     <p>Written by: {{$post->author->name}} </p>
+                     
                     <h2 class="blog-post-title"> 
                     
                      <a href="/posts/{{$post->id}}">

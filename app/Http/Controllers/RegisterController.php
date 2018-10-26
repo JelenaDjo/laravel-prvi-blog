@@ -27,8 +27,8 @@ class RegisterController extends Controller
         $user= new User();
         $user->name= request ('name');
         $user->email= request ('email');
-        $user->password= bcrypt(request ('password'));
-        $user->save();
+        $user->password= bcrypt(request ('password')); // hesing passworda
+        $user->save(); // ubacuje usera u bazu podataka
 
 
         

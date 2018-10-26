@@ -1,14 +1,14 @@
 <?php
 
 namespace App;
-
+use App\User;
 use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = [
-        'title', 'body', 'published'
+    protected $guarded = [
+        'id'
 
     ];
     const VALIDATION_RULES = [
@@ -20,6 +20,11 @@ class Post extends Model
     public static function getPublishedPosts() // ova funkcija vraca samo one postove koji su published, oni koji nemaju cekirano published nece se videti
     {
         return Post::where('published', true)->get();
+    }
+
+    public function author ()
+    {
+        return $this->belongsTo(User::class, 'author_id');
     }
     public function comments()
     {

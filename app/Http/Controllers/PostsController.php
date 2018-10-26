@@ -16,7 +16,7 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Post::with('comments')->findOrFail($id);
+        $post = Post::with('comments')->findOrFail($id); // with je eagrloading, suprotno od lasyloading
         //dd($post); // ovo znaci da se prekine program u tom prenutku i prikaze sta se tad tu nalazi
 
         return view('posts.show', ['post'=>$post]);
@@ -29,9 +29,20 @@ class PostsController extends Controller
     {
         $this->validate(
             request(),
+
            Post::VALIDATION_RULES
         );
-        Post::create(request()->all());
+
+        //dd(auth()->user)
+        
+        Post::create(
+            array_merge( 
+            request()->all(),
+            [
+                'author_id'=>auth()->user()->id
+            ]
+            )
+        );
             return redirect('/posts');
     }
 }
