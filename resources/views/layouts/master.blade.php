@@ -10,6 +10,11 @@
 <body>
     
  <main role="main" class="container">
+    @if($flash=session('message'))
+    <div class="alert alert-success">
+        {{ $flash }}
+    </div>
+    @endif
  @include('layouts.partials.header')
 
     <div class="row">

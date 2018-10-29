@@ -35,6 +35,9 @@ class RegisterController extends Controller
         
        // $user=User::create(request()->all());
         auth()->login($user);
+        
+        session()->flash('message', 'Hvala sto ste se registrovali!'); // php varijabla session je niz, u nju smo sad smestili poruku
+
         return redirect('/posts');
     }
 }
