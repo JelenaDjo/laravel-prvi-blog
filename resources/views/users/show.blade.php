@@ -12,10 +12,10 @@
     <h1>Posts</h1>
 
     <ul>
-        @foreach($posts as $post)
+        @foreach($user->posts as $post)
             <li>
                 <div class="blog-post"> 
-                     <p>Written by: <a href ="/users/{{$post->author_id}}">{{$post->author->name}} </a></p>
+                     <p>Written by: {{$post->author->name}} </p>
                      
                     <h2 class="blog-post-title"> 
                     

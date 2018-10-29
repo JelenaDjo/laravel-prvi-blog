@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CommentReceived;
 use App\Post;
 use App\Comment;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CommentsController extends Controller
 {
@@ -21,6 +22,9 @@ class CommentsController extends Controller
       $post->comments()->create(
           request()->all()
       );
+
+      Mail::to($post->author)->send(new CommentReceived($post));
+
       return redirect("/posts/{$postId}"); // moraju dupli navodnici a moze i bez viticastih oko id 
       //return redirect('/posts/' .$id);  // moze i ovako da se napise ovo gore
   }  

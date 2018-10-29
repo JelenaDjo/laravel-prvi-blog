@@ -35,6 +35,10 @@ Route::prefix('/{postId}/comments')->group(function(){
     Route::post('/', 'CommentsController@store');
     Route::post('/{commentId}', 'CommentsController@destroy');
 
+
+    
 }); 
 });
+
+Route::get('/users/{id}', 'UsersController@show'); 
 
