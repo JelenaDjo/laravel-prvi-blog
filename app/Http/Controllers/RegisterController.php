@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function __construction()
+    public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('age', ['only'=>'store']); // jer je u kelnu imenovan tako
     }
 
     public function create()
