@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','PostsController@index');
+
 Route::get('/logout', 'LoginController@logout');
 
 Route::prefix('login')->group(function(){
@@ -24,11 +24,11 @@ Route::prefix('register')->group(function() {
     Route::post('/', 'RegisterController@store');
 });
 
+Route::get('/posts','PostsController@index');
 Route::group(['prefix'=>'posts','middleware'=>['auth']],function(){ // //sve rute smo zastitili sa middleware=>auth, korisnik koji nije ulogovan ne moze da kreira post..., i ovako ubuduce da definisemo prefix
     Route::get('/create', 'PostsController@create'); ///->middleware('auth');
     Route::post('/', 'PostsController@store');
     Route::get('/{id}', 'PostsController@show');
-    Route::get('/','PostsController@index');
 
 
 Route::prefix('/{postId}/comments')->group(function(){ 
@@ -41,4 +41,5 @@ Route::prefix('/{postId}/comments')->group(function(){
 });
 
 Route::get('/users/{id}', 'UsersController@show'); 
+Route::get('/posts/tags/{tag}', 'TagsController@index');
 

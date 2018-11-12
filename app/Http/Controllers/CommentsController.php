@@ -17,6 +17,7 @@ class CommentsController extends Controller
         request(),
        Comment::VALIDATION_RULES
     );
+    
 
 
       $post->comments()->create(

@@ -17,7 +17,20 @@
     <h2 class="blog-post-title">          
         {{ $post->title}}  
     </h2>
+
+
     <p> {{ $post->body}}</p>
+      
+    <p>
+    <ul>
+        @foreach ($post->tags as $tag)
+            <li>
+                <a href='/posts/tags/{{$tag->name}}'> {{ $tag->name}}</a>
+            </li>
+        @endforeach
+    </ul>
+    </p>
+    <!-- comments  -->
 
     @if(count($post->comments))
         <h4>Comments</h4>
@@ -40,6 +53,8 @@
            
         </ul>
     @endif
+
+    
 
 <h4>Post a Comment</h4>
     <form method="POST" action="/posts/{{ $post->id }}/comments">
